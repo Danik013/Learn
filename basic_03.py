@@ -1,7 +1,7 @@
 import smtplib
 import os
 from dotenv import load_dotenv
-text_letter = ("""Привет, %friend_name%! %my_name% приглашает тебя на сайт %website%!
+text_letter = """Привет, %friend_name%! %my_name% приглашает тебя на сайт %website%!
 
 %website% — это новая версия онлайн-курса по программированию. 
 Изучаем Python и не только. Решаем задачи. Получаем ревью от преподавателя. 
@@ -16,12 +16,14 @@ text_letter = ("""Привет, %friend_name%! %my_name% приглашает т
 Все проекты — они же решение наших задачек — можно разместить на твоём GitHub. Работодатели такое оценят. 
 
 Регистрируйся → %website%  
-На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл.""")
+На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл."""
 
 website = "https://dvmn.org/profession-ref-program/2077647/d6NPX/"
 frend_name = "Павел"
 my_name = "Даниил"
-text_letter = text_letter.replace("%friend_name%",(frend_name), "%my_name%",(my_name), "%website%",(website))
+text_letter = text_letter.replace("%friend_name%",(frend_name))
+text_letter = text_letter.replace("%my_name%",(my_name))
+text_letter = text_letter.replace("%website%",(website))
 from_mail = "danik013@yandex.ru"
 to_mail = "2077647@gmail.com"
 subjest_mail = "Приглашение!"

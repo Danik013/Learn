@@ -85,9 +85,11 @@ LETTERS_MAPPING = {
     ' ': ' '
 }
 
-os.makedirs("output/svg/", mode=0o755, exist_ok=True)
 
 def main():
+
+    os.makedirs("output/svg/", mode=0o755, exist_ok=True)
+
     for n in range(10):
         random_skills = random.sample(SKILLS, 3)
         runic_skills = []

@@ -34,5 +34,4 @@ for check in checks:
 	if check(password):
 		score += 2
 
-
 print("Рейтинг пароля: ", score)

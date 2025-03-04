@@ -1,37 +1,44 @@
-password = input(str("Введите пароль: "))
+import re
+
+PASSWORD = input(str("Введите пароль: "))
 
 
-def is_very_long(password):    
-    return any ([len(password) >= 12])
+def is_very_long(PASSWORD):    
+    return any ([len(PASSWORD) >= 12])
     	
 
-def has_digit(password):
-	return any(i.isdigit() for i in password)
+def has_digit(PASSWORD):
+	return any(i.isdigit() for i in PASSWORD)
 	
 
-def has_upper_letters(password):
-	return any(i.isupper() for i in password)
+def has_upper_letters(PASSWORD):
+	return any(i.isupper() for i in PASSWORD)
 	
 
-def has_lower_letters(password):
-	return any(i.islower() for i in password)
+def has_lower_letters(PASSWORD):
+	return any(i.islower() for i in PASSWORD)
 
 
-def has_symbols(password):
-	return any(i == "%" or "#" for i in password)
+def has_symbols(PASSWORD):
+	return bool(re.search(r'\W', PASSWORD))
 
+def main(PASSWORD):
 
-score = 0
-checks = [
-    is_very_long,
-    has_digit,
-    has_upper_letters,
-    has_lower_letters,
-    has_symbols
-]
+    score = 0
+    checks = [
+        is_very_long,
+        has_digit,
+        has_upper_letters,
+        has_lower_letters,
+        has_symbols
+    ]
+	
+    for check in checks:
+	    if check(PASSWORD):
+		    score += 2
 
-for check in checks:
-	if check(password):
-		score += 2
+    print("Рейтинг пароля: ", score)
+    return score
 
-print("Рейтинг пароля: ", score)
+if __name__ == "__main__":
+	main(PASSWORD)

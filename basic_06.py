@@ -1,5 +1,3 @@
-import re
-
 PASSWORD = input(str("Введите пароль: "))
 
 
@@ -20,7 +18,8 @@ def has_lower_letters(PASSWORD):
 
 
 def has_symbols(PASSWORD):
-	return bool(re.search(r'\W', PASSWORD))
+	return any(not i.isalnum() for i in PASSWORD)
+
 
 def main(PASSWORD):
 
@@ -41,4 +40,4 @@ def main(PASSWORD):
     return score
 
 if __name__ == "__main__":
-	main(PASSWORD)
+    main(PASSWORD)

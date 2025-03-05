@@ -1,6 +1,3 @@
-password = input(str("Введите пароль: "))
-
-
 def is_very_long(password):    
     return any ([len(password) >= 12])
     	
@@ -40,4 +37,5 @@ def main(password):
     return score
 
 if __name__ == "__main__":
+    password = input(str("Введите пароль: "))
     main(password)

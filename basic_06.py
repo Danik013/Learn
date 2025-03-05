@@ -19,7 +19,6 @@ def has_symbols(password):
 
 
 def main():
-
     password = input(str("Введите пароль: "))
     score = 0
     checks = [

@@ -26,7 +26,7 @@ def main():
     
     def notify_progress(secs_left, question, chat_id, message_id):
         time = pytimeparse.parse(question)
-        bot.update_message(chat_id, message_id, "Осталось {} секунд\n{} ".format(secs_left, render_progressbar(time, secs_left)))
+        bot.update_message(chat_id, message_id, "Осталось {} секунд\n{}".format(secs_left, render_progressbar(time, secs_left)))
         
     
     def render_progressbar(total, iteration, prefix='', suffix='', length=30, fill='█', zfill='░'):

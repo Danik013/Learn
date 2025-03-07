@@ -5,11 +5,6 @@ import random
 import pytimeparse
 
 
-load_dotenv()
-TG_TOKEN = os.getenv("TOKEN")
-TG_CHAT_ID = os.getenv("CHAT_ID")
-
-
 def wait(chat_id, question, bot):
     message_id = bot.send_message(chat_id, "Запускаю таймер...")    
     bot.create_countdown(pytimeparse.parse(question), notify_progress, chat_id=chat_id, message_id=message_id, question=question, bot=bot)
@@ -36,7 +31,9 @@ def render_progressbar(total, iteration, prefix='', suffix='', length=30, fill='
 
 
 def main():
-    bot = ptbot.Bot(TG_TOKEN)
+    load_dotenv()
+    tg_token = os.getenv("TOKEN")
+    bot = ptbot.Bot(tg_token)
     bot.reply_on_message(wait, bot=bot)
     bot.run_bot()
 

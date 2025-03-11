@@ -1,8 +1,9 @@
 import json
 import requests
 from geopy import distance
-from pprint import pprint
 import folium
+from dotenv import load_dotenv
+import os
 
 
 def fetch_coordinates(apikey, address):
@@ -28,12 +29,12 @@ def get_min_dist(caffee):
 
 
 def main():
-    apikey = "d1c4c1e7-9487-4a1d-a23d-2bd51339557c"
+    load_dotenv()
+    apikey = os.getenv("APIKEY")
     location_а = input("Где вы находитесь? ")
     x, y = fetch_coordinates(apikey, location_а)
     my_coord_location = y, x
-    print("Ваши оординаты:", fetch_coordinates(apikey, location_а))
-    
+        
     coffee_file = open("coffee.json", "r", encoding="CP1251")
     coffee_list = coffee_file.read()
     all_coffee = json.loads(coffee_list)
